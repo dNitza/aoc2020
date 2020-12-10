@@ -35,16 +35,18 @@ class Day1 {
     }
 
     func part2() -> Void {
+        var result = 0
         let entries = loadEntries()
         entries.forEach { (x) in
             entries.forEach { (y) in
                 entries.forEach { (z) in
                     if x + y + z == target {
-                        print(x * y * z)
+                        result = x * y * z
                     }
                 }
             }
         }
+        print(result)
     }
     
     

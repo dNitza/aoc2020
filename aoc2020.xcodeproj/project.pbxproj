@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DD793872582135300988A2A /* day4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD793862582135300988A2A /* day4.swift */; };
 		A7EB57572581F0CC0069CAE6 /* day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EB57502581F0CC0069CAE6 /* day2.swift */; };
 		A7EB57592581F0CC0069CAE6 /* day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EB57542581F0CC0069CAE6 /* day1.swift */; };
 		A7EB575F2581F1550069CAE6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EB575E2581F1550069CAE6 /* main.swift */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4DD793862582135300988A2A /* day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day4.swift; sourceTree = "<group>"; };
+		4DD7938A2582136100988A2A /* input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
 		A730D69E2581C352007C2EDF /* aoc2020 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = aoc2020; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EB57502581F0CC0069CAE6 /* day2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = day2.swift; sourceTree = "<group>"; };
 		A7EB57512581F0CC0069CAE6 /* input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
@@ -49,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DD793852582134100988A2A /* day_4 */ = {
+			isa = PBXGroup;
+			children = (
+				4DD793862582135300988A2A /* day4.swift */,
+				4DD7938A2582136100988A2A /* input.txt */,
+			);
+			path = day_4;
+			sourceTree = "<group>";
+		};
 		A730D6952581C352007C2EDF = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +80,7 @@
 		A7EB574E2581F0B30069CAE6 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				4DD793852582134100988A2A /* day_4 */,
 				A7EB57642581F73E0069CAE6 /* day_3 */,
 				A7EB57532581F0CC0069CAE6 /* day_1 */,
 				A7EB574F2581F0CC0069CAE6 /* day_2 */,
@@ -162,6 +175,7 @@
 			files = (
 				A7EB57612581F5830069CAE6 /* input.txt in Sources */,
 				A7EB57622581F5830069CAE6 /* input.txt in Sources */,
+				4DD793872582135300988A2A /* day4.swift in Sources */,
 				A7EB57662581F75D0069CAE6 /* day3.swift in Sources */,
 				A7EB57592581F0CC0069CAE6 /* day1.swift in Sources */,
 				A7EB57572581F0CC0069CAE6 /* day2.swift in Sources */,
