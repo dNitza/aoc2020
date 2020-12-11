@@ -50,31 +50,20 @@ class Day5 {
     }
 }
 
-enum RowDirection {
+enum Direction {
+    case Left
+    case Right
     case Forward
     case Back
 }
 
-enum SeatDirection {
-    case Left
-    case Right
-}
-
-extension RowDirection {
+extension Direction {
     init?(dir: Character) {
         if dir == "F" {
             self = .Forward
         } else if dir == "B" {
             self = .Back
-        } else {
-            return nil
-        }
-    }
-}
-
-extension SeatDirection {
-    init?(dir: Character) {
-        if dir == "L" {
+        } else if dir == "L" {
             self = .Left
         } else if dir == "R" {
             self = .Right
@@ -85,43 +74,28 @@ extension SeatDirection {
 }
 
 struct SeatingArrangement {
-    var rowPath : [RowDirection] = []
-    var seatPath : [SeatDirection] = []
-    let rows = 128
-    let seats = 7
+    var rowPath : [Direction] = []
+    var seatPath : [Direction] = []
 
     init(path: String) {
-        rowPath = path[..<String.Index(utf16Offset: 7, in: path)].compactMap { RowDirection(dir: $0) ?? nil }
-        seatPath = path[String.Index(utf16Offset: 7, in: path)..<String.Index(utf16Offset: path.count, in: path)].compactMap { SeatDirection(dir: $0) ?? nil }
+        rowPath = path[..<String.Index(utf16Offset: 7, in: path)].compactMap { Direction(dir: $0) ?? nil }
+        seatPath = path[String.Index(utf16Offset: 7, in: path)..<String.Index(utf16Offset: path.count, in: path)].compactMap { Direction(dir: $0) ?? nil }
     }
 
-    func rowNumber() -> Int {
-        var remainingRows = 0...rows
-        rowPath.forEach { (dir) in
+    func position(max: Int, directions: [Direction]) -> Int {
+        var remainingSpot = 0...max
+        directions.forEach { (dir) in
             switch dir {
-            case .Forward:
-                remainingRows = remainingRows.lowerBound...remainingRows.upperBound - ((remainingRows.upperBound - remainingRows.lowerBound) / 2)
-            case .Back:
-                remainingRows = remainingRows.upperBound - ((remainingRows.upperBound - remainingRows.lowerBound) / 2)...remainingRows.upperBound
+            case .Forward, .Left:
+                remainingSpot = remainingSpot.lowerBound...remainingSpot.upperBound - ((remainingSpot.upperBound - remainingSpot.lowerBound) / 2)
+            case .Back, .Right:
+                remainingSpot = remainingSpot.upperBound - ((remainingSpot.upperBound - remainingSpot.lowerBound) / 2)...remainingSpot.upperBound
             }
         }
-        return remainingRows.first!
-    }
-
-    func seatNumber() -> Int {
-        var remainingSeats = 0...seats
-        seatPath.forEach { (dir) in
-            switch dir {
-            case .Left:
-                remainingSeats = remainingSeats.lowerBound...remainingSeats.upperBound - ((remainingSeats.upperBound - remainingSeats.lowerBound) / 2)
-            case .Right:
-                remainingSeats = remainingSeats.upperBound - ((remainingSeats.upperBound - remainingSeats.lowerBound) / 2)...remainingSeats.upperBound
-            }
-        }
-        return remainingSeats.first!
+        return remainingSpot.first!
     }
 
     func seatId() -> Int {
-        return (rowNumber() * 8) + seatNumber()
+        return (position(max: 128, directions: rowPath) * 8) + position(max: 7, directions: seatPath)
     }
 }
